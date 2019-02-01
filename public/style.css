@@ -619,6 +619,13 @@ button {
 
 /* ====================== media query ======================== */
 
+@media only screen and (max-width: 800px) {
+  .footer-text {
+    margin-top: 5px;
+    font-size: 10px;
+  }
+}
+
 @media only screen and (max-width: 765px) {
 
   .meet-the-title {
@@ -674,6 +681,13 @@ button {
     font-size: 15px;
   }
 
+}
+
+@media only screen and (max-width: 500px) {
+  .footer-text {
+    margin-top: 10px;
+    font-size: 7px;
+  }
 }
 
 @media only screen and (max-width: 480px) {
