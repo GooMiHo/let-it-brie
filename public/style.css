@@ -617,4 +617,84 @@ button {
   margin-left: 2%;
 }
 
+/* ====================== media query ======================== */
 
+@media only screen and (max-width: 765px) {
+
+  .meet-the-title {
+    font-size: 30px;
+  }
+
+  .teamContainer img {
+    width: 200px;
+  }
+
+  .teamContainer {
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  figure div {
+    text-align: left;
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+
+  .teamContainer p {
+    text-align: left;
+  }
+
+  .teamContainer figure {
+    width: 70%;
+    display: flex;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+
+  figure div {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  .teamContainer img {
+    width: 100px;
+  }
+
+  .teamContainer h5 {
+    font-size: 25px;
+  }
+
+  .teamContainer span {
+    font-size: 20px;
+  }
+
+  .teamContainer p {
+    font-size: 15px;
+  }
+
+}
+
+@media only screen and (max-width: 480px) {
+  .nav-text {
+    font-size: 10px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+
+  figure {
+    flex-direction: column;
+  }
+
+  figure div {
+    text-align: center;
+    margin-left: 0;
+  }
+
+  .teamContainer p {
+    text-align: center;
+  }
+
+}
