@@ -12,14 +12,17 @@ Team members: Bethany Walker, Ayema Chowdhury, Summer Deehan, and Connie Lim
 
 Let it Brie allows the user to shop for charcuterie boards and other related products.
 
-Users will have access to a list of products that can then be filtered by:
-* type (meat, cheese, etc.)
-* ...
-* ...
-...
+### Standard User ###
 
-### Extras
-...
+* Users will have access to a list of products that can then be filtered by type (meat, cheese, etc.), or by searching for keywords. 
+* Users 
+
+### Admin User ###
+ A user registerd as admin have more abilities, and diffenernt pages available to them. Admin uses can:
+  * Add or remove products (By adding a product with a new product type, the new filter option will be added to the the filter bar)
+  * Edit current products (price, name, etc.)
+  * Admin has access to a 'manage orders' page where they can manage customer orders
+
 
 ## Design
 This app has responsive design. **Try it on your phone!**
@@ -43,8 +46,4 @@ The boilerplate code for this project was provided by **Fullstack Academy of Cod
 
   * `sortChoice` keeps track of which sort is turned on, if any. It determines how the list is sorted.
 
-* **Local storage** is used to store `book`, the most recently viewed book. If the user clicks on a hyperlink leaving the app site, the book info is stored. Upon hitting the back button, the data is retrieved from local storage and used to repopulate the page.
-
-## Notes
-
-..
+* **Local storage** is used to store `cart`, the customers current, unsubmitted order. This allows a user, even one whose not signed in,to be able to return to the site later without loosing what they had already put in their cart.
