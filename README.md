@@ -2,7 +2,7 @@
 
 _Grace Shopper project for the Grace Hopper program at Fullstack Academy_
 
-Grace Shopper can be demoed at https://let-it-brie-1.herokuapp.com/
+**Let It Brie** can be demoed at https://let-it-brie-1.herokuapp.com/
 
 This e-commerce sight was designed following the requirments for the _Grace Shopper Project_ assigned by Grace Hopper/Fullstack
 
