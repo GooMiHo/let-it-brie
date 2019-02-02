@@ -60,6 +60,5 @@ The boilerplate code for this project was provided by **Fullstack Academy of Cod
 
 * **OAuth** is used to allow users the option to login with Google 
 
-* **Stripe** is used to securely place their orders with a credit card. 
+* **Stripe** is used to allow users to securely place their orders with a credit card. 
 
- 
