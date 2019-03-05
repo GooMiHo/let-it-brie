@@ -1,0 +1,17 @@
+/* import css from '../public/css/reviews.css'; */
+.star-clicked {
+  color: orange;
+}
+
+.reviewAv {
+  display: flex;
+}
+
+.reviewCount {
+  margin-left: 10px;
+  color: rgb(0, 26, 255);
+  font-style: italic;
+  font-size: 12px;
+  display: flex;
+  align-items: flex-end;
+}
