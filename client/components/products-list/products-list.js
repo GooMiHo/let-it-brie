@@ -63,7 +63,7 @@ class ProductsListComp extends Component {
         </div>
         <div id="outer-products-div">
           <h2 className="filter-title">{this.state.filteredBy === 'all' ?
-            'All' : `All ${this.state.filteredBy}`}</h2>
+            'All Products' : `All ${this.state.filteredBy}s`}</h2>
           <div className="products">
             {this.state.searchVal.length ? this.props.products
               .filter(product => this.productSearchMatch(this.state.searchVal, product))

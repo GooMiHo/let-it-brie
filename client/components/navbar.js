@@ -7,7 +7,6 @@ import CartButton from './CartButton';
 import { changeFilter, fetchProducts } from '../store/product';
 import FilterBar from './products-list/filter-bar';
 import css from '../../public/css/dropdown.css'
-import '../../public/style.css';
 
 class Navbar extends Component {
 
