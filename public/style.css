@@ -386,7 +386,7 @@ html, body, #container, .carousel {
 .meet-the-title {
   margin-bottom: 2%;
   font-family: 'Great Vibes', cursive;
-  color: #570000;
+  color: #860101;
   font-size: 4vw;
 }
 
@@ -602,6 +602,7 @@ button {
 }
 
 .text-indiv-prod {
+  min-width: 270px;
   margin-left: 6%;
 }
 

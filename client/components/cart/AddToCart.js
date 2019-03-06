@@ -9,7 +9,7 @@ class AddToCart extends Component {
     render(){
         return (
           <div>
-            <button type='button' onClick={this.handleClick}>
+            <button className="add-to-cart-btn" type='button' onClick={this.handleClick}>
             Add To Cart
             </button>
             <ToastContainer lightBackground position={ToastContainer.POSITION.TOP_RIGHT} store={ToastStore}/>

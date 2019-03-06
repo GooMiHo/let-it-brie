@@ -7,6 +7,7 @@ import Review from './Review';
 import AddToCart from '../cart/AddToCart';
 import CartPage from '../cart/CartPage';
 import { reviewInfo } from '../helperFuncs';
+import css from '../../../public/css/single-product.css';
 
 class SingleProduct extends React.Component {
   constructor() {
@@ -112,32 +113,36 @@ class SingleProduct extends React.Component {
                 <br />
                 <h2>Description</h2>
                 <p>{selectedProduct.description}</p>
-                <div>
-                  <h2>${selectedProduct.price}</h2>
-                  <label>Qty:</label>
-                  <select value={this.state.quantity} onChange={this.handleSelect}>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                  </select>
+                <div className="purchase-div">
+                  <div className="price-div">
+                    <h2 className="price">${selectedProduct.price}</h2>
+
+                    <label className="qty-label">Qty:</label>
+                    <select
+                      className="price-options"
+                      value={this.state.quantity}
+                      onChange={this.handleSelect}>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                  </div>
+                  <AddToCart
+                    selectedProduct={selectedProduct}
+                    cart={this.state.cart}
+                    addToCart={this.addToCart}
+                    quantity={this.state.quantity}
+                  />
                 </div>
-                <AddToCart
-                  selectedProduct={selectedProduct}
-                  cart={this.state.cart}
-                  addToCart={this.addToCart}
-                  quantity={this.state.quantity}
-                />
               </div>
             </div>
-
-
             <div>
               <Review
                 state={this.state}
