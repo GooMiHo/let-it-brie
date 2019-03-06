@@ -18,9 +18,6 @@ class CheckoutForm extends React.Component {
             zipCode: '',
             phoneNumber: ''
         }
-
-        this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     async componentDidMount () {
@@ -38,13 +35,13 @@ class CheckoutForm extends React.Component {
       })
     }
 
-    handleChange (e) {
+    handleChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value
         })
     }
 
-    handleSubmit (e) {
+    handleSubmit = (e) => {
         e.preventDefault();
         if (!this.props.user.id) {
           this.props.addUser({

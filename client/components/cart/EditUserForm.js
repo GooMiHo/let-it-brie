@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import React from 'react'
 import {connect} from 'react-redux'
 import AddressForm from './AddressForm'
@@ -18,10 +19,6 @@ class EditUserForm extends React.Component {
             phoneNumber: '',
             showForm: false
         }
-
-        this.handleClick = this.handleClick.bind(this)
-        this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     async componentDidMount () {
@@ -39,13 +36,13 @@ class EditUserForm extends React.Component {
       })
     }
 
-    handleChange (e) {
+    handleChange = (e) => {
       this.setState({
           [e.target.name]: e.target.value
       })
     }
 
-    handleSubmit (e) {
+    handleSubmit = (e) => {
       e.preventDefault();
 
       this.props.updateUser({
@@ -64,7 +61,7 @@ class EditUserForm extends React.Component {
       })
     }
 
-    handleClick () {
+    handleClick = () => {
         this.setState({
           showForm: true
         })
@@ -90,10 +87,8 @@ class EditUserForm extends React.Component {
                               <h4>Address: {user.address} {user.city} {user.country} {user.zipCode}</h4>
                               <h4>Phone Number: {user.phoneNumber}</h4>
                           </ul>
-
                         </div>
                     }
-
             </div>
         )
     }

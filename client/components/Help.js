@@ -8,18 +8,15 @@ class ContactUs extends React.Component {
             fullName: '',
             question: ''
         }
-
-        this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
-      handleChange (e) {
+      handleChange = (e) => {
           this.setState({
               [e.target.name]: e.target.value
           })
       }
 
-      handleSubmit (e) {
+      handleSubmit = (e) => {
         e.preventDefault();
         this.setState({
             email: '',

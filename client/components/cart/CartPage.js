@@ -12,10 +12,6 @@ class CartPage extends Component {
       cartItems: {},
       productNames: []
     }
-    this.getLocalStorage = this.getLocalStorage.bind(this)
-    this.increaseQuantity = this.increaseQuantity.bind(this)
-    this.decreaseQuantity = this.decreaseQuantity.bind(this)
-    this.removeFromCart = this.removeFromCart.bind(this)
   }
 
   componentDidMount() {
@@ -39,7 +35,7 @@ class CartPage extends Component {
     this.setState({productNames: cartItemNames, cartItems})
   }
 
-  getLocalStorage() {
+  getLocalStorage = () => {
     for (let key in this.state) {
       if (localStorage.hasOwnProperty(key)) {
         let value = localStorage.getItem(key)
@@ -53,7 +49,7 @@ class CartPage extends Component {
     }
   }
 
-  increaseQuantity (product, quantity) {
+  increaseQuantity = (product, quantity) => {
     let cart = [...this.state.cart]
 
     for (let i = 1; i <= quantity; i++) {
@@ -66,7 +62,7 @@ class CartPage extends Component {
     this.setState({cart: [...cart], cartObj})
   }
 
-  decreaseQuantity (product, quantity) {
+  decreaseQuantity = (product, quantity) => {
     let cart = [...this.state.cart]
 
     for (let i = quantity; i > 0; i--) {
@@ -79,7 +75,7 @@ class CartPage extends Component {
     this.setState({cart: [...cart], cartObj})
 }
 
-  removeFromCart(product){
+  removeFromCart = (product) => {
     let cartArr = JSON.parse(localStorage.getItem('cart'))
     let newCartArr = cartArr.filter(item => (
       item.id !== product.id

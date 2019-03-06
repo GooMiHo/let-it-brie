@@ -15,25 +15,21 @@ class EditProduct extends React.Component {
         stock: '',
         imageURL: ''
       }
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
   }
   async componentDidMount() {
     await this.props.getAProduct(this.props.match.params.productId);
     this.setState(this.props.selectedProduct)
   }
-  handleChange (e) {
+  handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
     })
   }
-  handleSubmit (e) {
+  handleSubmit = (e) => {
     this.props.updateProduct(this.state.id, this.state);
     e.preventDefault();
   }
-  handleDelete () {
+  handleDelete = () => {
     this.props.removeAProduct(this.state.id);
     this.props.history.push('/admin/products');
    // redirect to all producs

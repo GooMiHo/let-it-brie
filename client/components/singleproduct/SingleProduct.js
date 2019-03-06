@@ -21,13 +21,6 @@ class SingleProduct extends React.Component {
       cart: [],
       showForm: false
     }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleStarSelect = this.handleStarSelect.bind(this)
-    this.getLocalStorage = this.getLocalStorage.bind(this)
-    this.addToCart = this.addToCart.bind(this)
-    this.handleSelect = this.handleSelect.bind(this)
-    this.showForm = this.showForm.bind(this)
   }
 
   async componentDidMount() {
@@ -43,7 +36,7 @@ class SingleProduct extends React.Component {
       })
   }
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault(e)
     const currentState = this.state.showForm;
     this.setState({ showForm: !currentState })
@@ -58,19 +51,19 @@ class SingleProduct extends React.Component {
     this.props.addReview(review)
   }
 
-  handleChange(e) {
+  handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value })
   }
 
-  handleSelect(event) {
+  handleSelect = (event) => {
     this.setState({ quantity: event.target.value })
   }
 
-  handleStarSelect(rating) {
+  handleStarSelect = (rating) => {
     this.setState({ rating })
   }
 
-  getLocalStorage() {
+  getLocalStorage = () => {
     for (let key in this.state) {
       if (localStorage.hasOwnProperty(key)) {
         let value = localStorage.getItem(key)
@@ -84,7 +77,7 @@ class SingleProduct extends React.Component {
     }
   }
 
-  addToCart(product, quantity) {
+  addToCart = (product, quantity) => {
     let cart = [...this.state.cart]
     for (let i = 1; i <= quantity; i++) {
       cart.push(product)
@@ -95,7 +88,7 @@ class SingleProduct extends React.Component {
     this.setState({ cart: [...cart], cartObj })
   }
 
-  showForm() {
+  showForm = () => {
     const currentState = this.state.showForm;
     this.setState({ showForm: !currentState });
   }

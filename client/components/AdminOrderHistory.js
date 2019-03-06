@@ -4,14 +4,11 @@ import {connect} from 'react-redux'
 import {fetchOrders, updateStatus } from '../store'
 
 class AdminOrderHistory extends React.Component {
-  constructor() {
-    super();
-    this.handleChange = this.handleChange.bind(this)
-  }
+
   componentDidMount() {
     this.props.getOrders();
   }
-  handleChange(val, id) {
+  handleChange = (val, id) => {
     this.props.sendStatus(val, id);
   }
   render() {

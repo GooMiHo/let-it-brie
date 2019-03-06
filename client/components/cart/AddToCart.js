@@ -2,11 +2,7 @@ import React, {Component} from 'react'
 import {ToastContainer, ToastStore} from 'react-toasts';
 
 class AddToCart extends Component {
-    constructor () {
-      super();
-      this.handleClick = this.handleClick.bind(this);
-    }
-    handleClick() {
+    handleClick = () => {
       this.props.addToCart(this.props.selectedProduct, this.props.quantity);
       ToastStore.success("The product was successfully added!")
     }
