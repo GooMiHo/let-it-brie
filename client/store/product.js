@@ -11,7 +11,7 @@ const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
 // INITIAL STATE
 const productsState = {
     products: [],
-    filteredProducts: [],
+    filteredBy: 'all',
     selectedProduct: {name: '', price: '', description: '', imageURL: ''}
 }
 
@@ -26,10 +26,10 @@ const getOneProduct = (product) => ({
     product
 })
 
-// const filterProducts = (filteredProducts) => ({
-//     type: FILTER_PRODUCT,
-//     filteredProducts
-// })
+export const changeFilter = (filteredBy) => ({
+    type: FILTER_PRODUCT,
+    filteredBy
+})
 
 const addProduct = (product) => ({
   type: ADD_PRODUCT,
@@ -123,7 +123,7 @@ const productsReducer = (state = productsState, action) => {
           return{...state, selectedProduct: action.product}
 
         case FILTER_PRODUCT:
-          return {...state, filteredProducts: action.filteredProducts}
+          return {...state, filteredBy: action.filteredBy}
 
         default:
           return state

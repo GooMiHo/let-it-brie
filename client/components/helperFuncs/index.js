@@ -83,9 +83,12 @@ function removeClass(star) {
   star.classList.remove('star-clicked');
 }
 
-export function byUserName(user) {
+export function byUserName(user, currentUser) {
   if (user && user.firstName) {
     return <p> By User {user.firstName} {user.lastName}</p>;
+  }
+  else if (!user && currentUser.firstName) {
+    return <p> By User {currentUser.firstName} {currentUser.lastName}</p>;
   }
   return <p><i> By Anonymous</i></p>
 }

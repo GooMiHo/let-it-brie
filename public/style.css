@@ -82,16 +82,20 @@ form div {
   margin-right: 20px;
 }
 
-.filter-bar {
-  margin-top: 16px;
-  position: absolute;
-  right: 0;
-  margin-right: 200px;
-}
+/* .filter-bar-container {
+  width: 200px;
+} */
 
-.filter-bar select {
+.filter-bar {
+  margin-top: 10px;
+  margin-left: 2%;
+  width: 200px;
   border: 1px solid darkgray;
   background-color: white;
+  /* margin-top: 16px;
+  position: absolute;
+  right: 0;
+  margin-right: 200px; */
 }
 
 .main-products-page {
@@ -242,7 +246,7 @@ form div {
 .nav-links {
   float: left;
   display: flex;
-  width: 50%;
+  width: 30%;
   justify-content: space-around;
 }
 
@@ -300,6 +304,7 @@ html, body, #container, .carousel {
 .nav-text {
   color: white;
   margin-top: 12px;
+  font-size: 17px;
 }
 
 .nav-other {
@@ -620,6 +625,11 @@ button {
 /* ====================== media query ======================== */
 
 @media only screen and (max-width: 800px) {
+
+  .nav-text {
+    font-size: 10px;
+  }
+
   .footer-text {
     margin-top: 5px;
     font-size: 10px;
@@ -687,12 +697,6 @@ button {
   .footer-text {
     margin-top: 10px;
     font-size: 7px;
-  }
-}
-
-@media only screen and (max-width: 480px) {
-  .nav-text {
-    font-size: 10px;
   }
 }
 

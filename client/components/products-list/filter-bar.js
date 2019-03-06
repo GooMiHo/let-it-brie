@@ -1,19 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
-const FilterBar = ({handleChange, products}) => {
+const FilterBar = ({ handleChange, products }) => {
   const categories = products.map(product => product.category);
-  const unique =  categories.sort().filter((prev, i, product) => !i || prev !== product[i - 1])
+  const unique = categories.sort().filter((prev, i, product) => !i || prev !== product[i - 1])
 
   return (
-    <div className="filter-bar">
-      <select onChange={function(ev) { handleChange(ev.target.value)}}>
-        <option>all</option>
-        {unique.map((category) =>  <option key={category}>{category}</option>)}
-        {/* <option>charcuterie boards</option>
-        <option>cheeses</option>
-        <option>meats</option>
-        <option>extras</option> */}
-      </select>
+    <div id="dropdown" className="dropdown-content">
+        <Link to="/products"><p onClick={() => handleChange('all')} >all</p></Link>
+        {unique.map((category) => <Link key={category} to="/products"><p id={category} onClick={(ev) => handleChange(ev.target.id) }>{`${category}s`}</p></Link>)}
     </div>
   )
 }

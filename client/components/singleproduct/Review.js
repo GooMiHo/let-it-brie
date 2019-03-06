@@ -67,7 +67,7 @@ class Review extends React.Component {
             <div key={review.id}>
               <h3>{review.title}</h3>
               <h1>  {ratingSrc} </h1>
-              {byUserName(review.user)}
+              {byUserName(review.user, this.props.user)}
               <p> on {formattedDate} </p>
               <p> {review.text}</p>
             </div>

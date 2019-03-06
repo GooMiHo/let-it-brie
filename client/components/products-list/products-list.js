@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import Product from './product'
-import FilterBar from './filter-bar'
-import SearchBar from './search-bar'
-import { connect } from 'react-redux'
-import { fetchProducts, removeAProduct } from '../../store/product'
-import { addProduct } from '../../store/order'
-import { me } from '../../store/user'
+import React, { Component } from 'react';
+import Product from './product';
+import FilterBar from './filter-bar';
+import SearchBar from './search-bar';
+import { connect } from 'react-redux';
+import { fetchProducts, removeAProduct, changeFilter } from '../../store/product';
+import { addProduct } from '../../store/order';
+import { me } from '../../store/user';
 
 class ProductsListComp extends Component {
   constructor() {
@@ -13,22 +13,25 @@ class ProductsListComp extends Component {
     this.state = {
       products: [],
       searchVal: '',
-      filteredProducts: 'all'
+      filteredBy: 'all'
     }
-    this.handleChange = this.handleChange.bind(this);
-    this.searchOnChange = this.searchOnChange.bind(this);
   }
 
   async componentDidMount() {
     await this.props.fetchProducts();
     await this.props.me();
     this.setState({
-      products: this.props.products
+      products: this.props.products,
+      filteredBy: this.props.filteredBy
     })
   }
 
-  searchTitle(searchVal) {
-    this.setState({ filteredProducts: `Search Results For: ${searchVal}` })
+  componentDidUpdate(prevProp) {
+    if (prevProp.filteredBy !== this.props.filteredBy) {
+      this.setState({
+        filteredBy: this.props.filteredBy
+      });
+    }
   }
 
   productSearchMatch(searchVal, product) {
@@ -43,12 +46,7 @@ class ProductsListComp extends Component {
     return false;
   }
 
-
-  handleChange(whatToFilter) {
-    this.setState({ filteredProducts: whatToFilter })
-  }
-
-  searchOnChange(searchVal) {
+  searchOnChange = (searchVal) => {
     this.setState({ searchVal })
     this.searchTitle(searchVal);
   }
@@ -59,18 +57,46 @@ class ProductsListComp extends Component {
       <div >
         <div className="filter-search-outer">
           <div className="filter-search">
-            <FilterBar handleChange={this.handleChange} products={this.state.products} />
+            {/* <FilterBar handleChange={this.handleChange} products={this.state.products} /> */}
             <SearchBar searchOnChange={this.searchOnChange} />
           </div>
         </div>
         <div id="outer-products-div">
-        <h2 className="filter-title">{this.state.filteredProducts === 'all' ?
-              'All' : `All ${this.state.filteredProducts}`}</h2>
+          <h2 className="filter-title">{this.state.filteredBy === 'all' ?
+            'All' : `All ${this.state.filteredBy}`}</h2>
           <div className="products">
-            {this.state.searchVal.length ? this.props.products.filter(product => this.productSearchMatch(this.state.searchVal, product)).map(product => <Product user={this.props.user} key={product.id} history={this.props.history} product={product} admin={this.props.admin} removeProduct={this.props.removeProduct} addProductToCart={this.props.addProduct} userId={this.props.currentUser} />)
-              : (this.state.filteredProducts === 'all' ? this.props.products
-                : this.props.products.filter(product => product.category === this.state.filteredProducts)).map(product =>
-                  <Product user={this.props.user} key={product.id} history={this.props.history} product={product} user={this.props.user} admin={this.props.admin} removeProduct={this.props.removeProduct} addProductToCart={this.props.addProduct} userId={this.props.currentUser} />)}
+            {this.state.searchVal.length ? this.props.products
+              .filter(product => this.productSearchMatch(this.state.searchVal, product))
+              .map(product => {
+                return (
+                  <Product
+                    user={this.props.user}
+                    key={product.id}
+                    history={this.props.history}
+                    product={product} admin={this.props.admin}
+                    removeProduct={this.props.removeProduct}
+                    addProductToCart={this.props.addProduct}
+                    userId={this.props.currentUser}
+                  />
+                )
+              })
+              : (this.state.filteredBy === 'all' ? this.props.products
+                : this.props.products
+                  .filter(product => product.category === this.state.filteredBy))
+                .map(product => {
+                  return (
+                    <Product
+                      user={this.props.user}
+                      key={product.id}
+                      history={this.props.history} product={product}
+                      admin={this.props.admin}
+                      removeProduct={this.props.removeProduct}
+                      addProductToCart={this.props.addProduct}
+                      userId={this.props.currentUser}
+                    />
+                  )
+                }
+                )}
           </div>
         </div>
       </div>
@@ -82,6 +108,7 @@ class ProductsListComp extends Component {
 const mapStateToProps = (state) => {
   return {
     products: state.productsReducer.products,
+    filteredBy: state.productsReducer.filteredBy,
     currentUser: state.user.id,
     user: state.user
   }
@@ -91,7 +118,8 @@ const mapDispatchToProps = (dispatch) => ({
   me: () => dispatch(me()),
   fetchProducts: () => dispatch(fetchProducts()),
   removeProduct: (id) => dispatch(removeAProduct(id)),
-  addProduct: (product, userId) => dispatch(addProduct(product, userId))
+  addProduct: (product, userId) => dispatch(addProduct(product, userId)),
+  // changeFilter: (whatToFilter) => dispatch(changeFilter(whatToFilter)),
 });
 
 const ProductsList = connect(mapStateToProps, mapDispatchToProps)(ProductsListComp)
