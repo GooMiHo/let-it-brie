@@ -83,14 +83,18 @@ function removeClass(star) {
   star.classList.remove('star-clicked');
 }
 
-export function byUserName(user, currentUser) {
+export function byUserName(user, current) {
+    return <p className="reviewer-title">Reviewed by <span className="reviewer">{userName(user, current)}</span></p>
+}
+
+function userName(user, currentUser) {
   if (user && user.firstName) {
-    return <p> By User {user.firstName} {user.lastName}</p>;
+    return `${user.firstName} ${user.lastName}`
   }
   else if (!user && currentUser.firstName) {
-    return <p> By User {currentUser.firstName} {currentUser.lastName}</p>;
+    return `${currentUser.firstName} ${currentUser.lastName}`;
   }
-  return <p><i> By Anonymous</i></p>
+  return <i>Anonymous</i>;
 }
 
 export function reviewInfo(reviews) {

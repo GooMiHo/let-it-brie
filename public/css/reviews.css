@@ -15,3 +15,63 @@
   display: flex;
   align-items: flex-end;
 }
+
+.review-line-abv {
+  margin-top: 20px;
+}
+
+.review-title {
+  margin-top: 20px;
+  margin-bottom: 5px;
+  margin-left: 5%;
+}
+
+.write-review-btn {
+  margin-left: 5%;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.each-review-div {
+  width: 90%;
+  margin: auto;
+}
+
+.review-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.review-divider {
+  opacity: 0.2;
+}
+
+.reviewer-title,
+.review-date {
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-weight: 200;
+  font-size: 12px;
+}
+
+.reviewer {
+  font-weight: 400;
+}
+
+.fa-star:before {
+  font-size: 15px;
+}
+
+.each-review-title {
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.review-txt {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  font-weight: 300px;
+  overflow-wrap: break-word;
+}

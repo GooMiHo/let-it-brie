@@ -20,12 +20,17 @@ class Review extends React.Component {
 
     const isEnabled = this.props.state.rating && this.props.state.title && this.props.state.text
     return (
-      <div className="review-pad">
+      <div >
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
         <ToastContainer lightBackground position={ToastContainer.POSITION.TOP_RIGHT} store={ToastStore} />
-        <h3 className="review-pad"> Reviews: </h3>
-        <hr />
-        {this.props.state.showForm ? null : <button type="button" onClick={this.props.showForm}> Add Review </button>}
+        <hr className="review-line-abv"/>
+        <h3 className="review-title"> Reviews </h3>
+        {
+          this.props.state.showForm ? null :
+          <button type="button" className="write-review-btn" onClick={this.props.showForm}>
+            Write A Review
+          </button>
+        }
         {this.props.state.showForm ? <div>
           <form onSubmit={this.props.handleSubmit}>
             <label htmlFor='rating'> Rating:  </label>
@@ -60,16 +65,18 @@ class Review extends React.Component {
           </form>
         </div> : null}
         {this.props.reviews.map(review => {
-          const ratingSrc = starRating(review.rating);
           let reviewDate = review.id ? review.createdAt.slice(0, 10).split('-') : null;
           let formattedDate = review ? `${reviewDate[1]}/${reviewDate[2]}/${reviewDate[0]}` : null
           return (
-            <div key={review.id}>
-              <h3>{review.title}</h3>
-              <h1>  {ratingSrc} </h1>
-              {byUserName(review.user, this.props.user)}
-              <p> on {formattedDate} </p>
-              <p> {review.text}</p>
+            <div className="each-review-div" key={review.id}>
+              <hr className="review-divider" />
+              <div className="review-top">
+                {byUserName(review.user, this.props.user)}
+                <p className="review-date">{formattedDate}</p>
+              </div>
+              {starRating(review.rating)}
+              <h2 className="each-review-title">{review.title}</h2>
+              <p className="review-txt">{review.text}</p>
             </div>
           )
         })}
