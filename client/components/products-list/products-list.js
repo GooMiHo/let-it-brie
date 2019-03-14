@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import Product from './product';
-import FilterBar from './filter-bar';
-import SearchBar from './search-bar';
 import { connect } from 'react-redux';
-import { fetchProducts, removeAProduct, changeFilter, fetchWhatToSearch } from '../../store/product';
+import { fetchProducts, removeAProduct } from '../../store/product';
 import { addProduct } from '../../store/order';
 import { me } from '../../store/user';
 
@@ -11,7 +9,6 @@ class ProductsListComp extends Component {
   constructor() {
     super()
     this.state = {
-      products: [],
       searchVal: '',
       filteredBy: 'all'
     }
@@ -21,7 +18,6 @@ class ProductsListComp extends Component {
     await this.props.fetchProducts();
     await this.props.me();
     this.setState({
-      products: this.props.products,
       filteredBy: this.props.filteredBy,
       searchVal: this.props.searchVal
     })
@@ -51,18 +47,11 @@ class ProductsListComp extends Component {
 
   searchOnChange = (searchVal) => {
     this.setState({ searchVal })
-    // this.searchTitle(searchVal);
   }
 
   render() {
     return (
       <div >
-        <div className="filter-search-outer">
-          <div className="filter-search">
-            {/* <FilterBar handleChange={this.handleChange} products={this.state.products} /> */}
-            {/* <SearchBar searchOnChange={this.searchOnChange} /> */}
-          </div>
-        </div>
         <div id="outer-products-div">
           <h2 className="filter-title">{this.state.filteredBy === 'all' ?
             'All Products' : `All ${this.state.filteredBy}s`}</h2>
@@ -121,8 +110,7 @@ const mapDispatchToProps = (dispatch) => ({
   me: () => dispatch(me()),
   fetchProducts: () => dispatch(fetchProducts()),
   removeProduct: (id) => dispatch(removeAProduct(id)),
-  addProduct: (product, userId) => dispatch(addProduct(product, userId)),
-  // changeFilter: (whatToFilter) => dispatch(changeFilter(whatToFilter)),
+  addProduct: (product, userId) => dispatch(addProduct(product, userId))
 });
 
 const ProductsList = connect(mapStateToProps, mapDispatchToProps)(ProductsListComp)
