@@ -1,17 +1,19 @@
 import axios from 'axios'
 
 // ACTION TYPES
-const GET_PRODUCTS = 'GET_PRODUCTS'
-const GET_ONE_PRODUCT = 'GET_ONE_PRODUCT'
-const FILTER_PRODUCT = 'FILTER_PRODUCT'
-const ADD_PRODUCT = 'ADD_PRODUCT'
-const UPDATE_PRODUCT = 'UPDATE_PRODUCT'
-const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
+const GET_PRODUCTS = 'GET_PRODUCTS';
+const GET_ONE_PRODUCT = 'GET_ONE_PRODUCT';
+const FILTER_PRODUCT = 'FILTER_PRODUCT';
+const ADD_PRODUCT = 'ADD_PRODUCT';
+const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
+const REMOVE_PRODUCT = 'REMOVE_PRODUCT';
+const GET_WHAT_TO_SEARCH = 'GET_WHAT_TO_SEARCH';
 
 // INITIAL STATE
 const productsState = {
     products: [],
     filteredBy: 'all',
+    searchVal: '',
     selectedProduct: {name: '', price: '', description: '', imageURL: ''}
 }
 
@@ -19,6 +21,11 @@ const productsState = {
 const getProducts = (products) => ({
     type: GET_PRODUCTS,
     products
+})
+
+const getWhatToSearch = (searchVal) => ({
+  type: GET_WHAT_TO_SEARCH,
+  searchVal
 })
 
 const getOneProduct = (product) => ({
@@ -60,6 +67,12 @@ export const fetchProducts = () => {
 //         dispatch(filterProducts(data))
 //     }
 // }
+
+export const fetchWhatToSearch = (whatToSearch) => {
+  return (dispatch) => {
+    dispatch(getWhatToSearch(whatToSearch))
+  }
+}
 
 export const fetchAProduct = (id) => {
     return async (dispatch) => {
@@ -124,6 +137,9 @@ const productsReducer = (state = productsState, action) => {
 
         case FILTER_PRODUCT:
           return {...state, filteredBy: action.filteredBy}
+
+        case GET_WHAT_TO_SEARCH:
+          return {...state, searchVal: action.searchVal}
 
         default:
           return state

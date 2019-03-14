@@ -34,10 +34,10 @@ nav a {
   margin: 1em;
 }
 
-form div {
+/* form div {
   margin: 1em;
   display: inline-block;
-}
+} */
 
 /* ======================== products containers ==================================== */
 
@@ -57,7 +57,6 @@ form div {
   grid-gap: 1rem 1rem;
   justify-content: center;
 }
-
 /* ======================== filter and search ==================================== */
 
 .filter-search {
@@ -67,10 +66,17 @@ form div {
   display: flex;
 }
 
-.search{
-  position: absolute;
-  right: 0;
-  margin-right: 20px;
+.search {
+  display: inline-block;
+  margin-top: 7px;
+  margin-left: 5%;
+}
+
+.search input {
+  font-size: 17px;
+  border-radius: 3px;
+  padding-left: 10px;
+  border: 2px solid white;
 }
 
 /* .filter-bar-container {
@@ -302,7 +308,6 @@ html, body, #container, .carousel {
 #nav-text {
   background-color: black;
   height: 40px;
-  margin-top: 7px;
 }
 
 .main-title {

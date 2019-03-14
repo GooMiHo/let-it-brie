@@ -3,7 +3,7 @@ import Product from './product';
 import FilterBar from './filter-bar';
 import SearchBar from './search-bar';
 import { connect } from 'react-redux';
-import { fetchProducts, removeAProduct, changeFilter } from '../../store/product';
+import { fetchProducts, removeAProduct, changeFilter, fetchWhatToSearch } from '../../store/product';
 import { addProduct } from '../../store/order';
 import { me } from '../../store/user';
 
@@ -22,14 +22,17 @@ class ProductsListComp extends Component {
     await this.props.me();
     this.setState({
       products: this.props.products,
-      filteredBy: this.props.filteredBy
+      filteredBy: this.props.filteredBy,
+      searchVal: this.props.searchVal
     })
   }
 
   componentDidUpdate(prevProp) {
-    if (prevProp.filteredBy !== this.props.filteredBy) {
+    if (prevProp.filteredBy !== this.props.filteredBy ||
+        prevProp.searchVal !== this.props.searchVal) {
       this.setState({
-        filteredBy: this.props.filteredBy
+        filteredBy: this.props.filteredBy,
+        searchVal: this.props.searchVal
       });
     }
   }
@@ -48,17 +51,16 @@ class ProductsListComp extends Component {
 
   searchOnChange = (searchVal) => {
     this.setState({ searchVal })
-    this.searchTitle(searchVal);
+    // this.searchTitle(searchVal);
   }
 
   render() {
     return (
-
       <div >
         <div className="filter-search-outer">
           <div className="filter-search">
             {/* <FilterBar handleChange={this.handleChange} products={this.state.products} /> */}
-            <SearchBar searchOnChange={this.searchOnChange} />
+            {/* <SearchBar searchOnChange={this.searchOnChange} /> */}
           </div>
         </div>
         <div id="outer-products-div">
@@ -109,6 +111,7 @@ const mapStateToProps = (state) => {
   return {
     products: state.productsReducer.products,
     filteredBy: state.productsReducer.filteredBy,
+    searchVal: state.productsReducer.searchVal,
     currentUser: state.user.id,
     user: state.user
   }

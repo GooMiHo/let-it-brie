@@ -1,9 +1,9 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {withRouter, Route, Switch} from 'react-router-dom'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { withRouter, Route, Switch } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup, UserHome} from './components'
-import {me} from './store'
+import { Login, Signup, UserHome, NavBar } from './components'
+import { me } from './store'
 import ProductsList from './components/products-list/products-list'
 import SingleProduct from './components/singleproduct/SingleProduct'
 import CreateProduct from './components/CreateProduct'
@@ -29,38 +29,41 @@ class Routes extends Component {
   }
 
   render() {
-    const {isLoggedIn} = this.props
+    const { isLoggedIn } = this.props
 
     return (
-      <Switch>
-        {/* Routes placed here are available to all visitors */}
-        <Route exact path="/admin/orders" component={AdminOrderHistory} />
-        <Route exact path='/admin/products/add' component={CreateProduct} />
-        <Route path='/admin/products/:productId' component={EditProduct} />
-        <Route exact path='/products/:productId' component={SingleProduct} />
-        <Route path="/products" render={routeProps => <ProductsList {...routeProps} admin={false} />} />
-        <Route path="/admin/products" render={routeProps => <ProductsListAdmin {...routeProps} user={this.props.user} />} />
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
-        <Route path='/cart/checkout/payment' component={PaymentCheckout} />
-        <Route exact path="/confirmation" component={Confirmation} />
-        <Route exact path="/cart/checkout" render={routeProps => <CheckoutForm {...routeProps} user={this.props.user} />} />
-        <Route path="/our-story" component={OurStory} />
-        <Route path="/help" component={ContactUs} />
-        <Route exact path="/cart" component={CartPage} />
-        <Route path="/home" component={UserHome} />
+      <div>
+        <Route path="/" component={NavBar} />
+        <Switch>
+          {/* Routes placed here are available to all visitors */}
+          <Route exact path="/admin/orders" component={AdminOrderHistory} />
+          <Route exact path='/admin/products/add' component={CreateProduct} />
+          <Route path='/admin/products/:productId' component={EditProduct} />
+          <Route exact path='/products/:productId' component={SingleProduct} />
+          <Route path="/products" render={routeProps => <ProductsList {...routeProps} admin={false} />} />
+          <Route path="/admin/products" render={routeProps => <ProductsListAdmin {...routeProps} user={this.props.user} />} />
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={Signup} />
+          <Route path='/cart/checkout/payment' component={PaymentCheckout} />
+          <Route exact path="/confirmation" component={Confirmation} />
+          <Route exact path="/cart/checkout" render={routeProps => <CheckoutForm {...routeProps} user={this.props.user} />} />
+          <Route path="/our-story" component={OurStory} />
+          <Route path="/help" component={ContactUs} />
+          <Route exact path="/cart" component={CartPage} />
+          <Route path="/home" component={UserHome} />
 
-        {isLoggedIn && (
-          <Switch>
-            {/* Routes placed here are only available after logging in */}
-            <Route exact path="/account/order-history" component={OrderHistory} />
-            <Route path="/account" component={Account} />
-          </Switch>
-        )}
-        {/* Displays our Login component as a fallback */}
-        <Route path="/" component={UserHome} />
-        {/* <Route component={Login} /> */}
-      </Switch>
+          {isLoggedIn && (
+            <Switch>
+              {/* Routes placed here are only available after logging in */}
+              <Route exact path="/account/order-history" component={OrderHistory} />
+              <Route path="/account" component={Account} />
+            </Switch>
+          )}
+          {/* Displays our Login component as a fallback */}
+          <Route path="/" component={UserHome} />
+          {/* <Route component={Login} /> */}
+        </Switch>
+      </div>
     )
   }
 }

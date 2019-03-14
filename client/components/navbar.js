@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logout } from '../store';
 import CartButton from './CartButton';
-import { changeFilter, fetchProducts } from '../store/product';
+import { changeFilter, fetchProducts, fetchWhatToSearch } from '../store/product';
 import FilterBar from './products-list/filter-bar';
+import SearchBar from './products-list/search-bar';
 import css from '../../public/css/dropdown.css'
 
 class Navbar extends Component {
@@ -17,6 +18,11 @@ class Navbar extends Component {
 
   handleChange = (whatToFilter) => {
     this.props.changeFilter(whatToFilter);
+    this.props.fetchWhatToSearch('');
+  }
+
+  handleSubmit = (whatToSearch) => {
+    this.props.fetchWhatToSearch(whatToSearch);
   }
 
   render() {
@@ -42,39 +48,46 @@ class Navbar extends Component {
                   <Link to="/admin/orders" className="nav-text">  Manage Orders</Link>
                 </div>
               ) :
-              <div className="dropdown-div">
-                {/* <Link to="/products" className="nav-text dropdown-btn" >Shop</Link> */}
-                <button type="button" className="nav-text dropdown-btn" onClick={toggleDropdown}>Shop</button>
+                <div className="dropdown-div">
+                  {/* <Link to="/products" className="nav-text dropdown-btn" >Shop</Link> */}
+                  <button type="button" className="nav-text dropdown-btn" onClick={toggleDropdown}>Shop</button>
+                  <FilterBar
+                    handleChange={this.handleChange}
+                    products={this.props.products}
+                  />
 
-                <FilterBar handleChange={this.handleChange} products={this.props.products} />
-              </div>
+                </div>
               }
               <br />
               <Link to="/our-story" className="nav-text">Our Story</Link>
               <br />
               <Link to="/help" className="nav-text">Contact Us!</Link>
             </div>
-          </div>
-          <nav className='login-nav'>
-            {this.props.isLoggedIn ? (
-              <div>
-                <Link to="/home" className="nav-text">Home</Link>
-                <Link to="/account" className="nav-text">Account</Link>
-                <a href="#" onClick={this.props.handleClick} className="nav-text">
-                  Logout
+            <SearchBar
+              searchOnSubmit={this.handleSubmit}
+              filterOnChange={this.handleChange}
+              history={this.props.history}
+            /><nav className='login-nav'>
+              {this.props.isLoggedIn ? (
+                <div>
+                  <Link to="/home" className="nav-text">Home</Link>
+                  <Link to="/account" className="nav-text">Account</Link>
+                  <a href="#" onClick={this.props.handleClick} className="nav-text">
+                    Logout
                 </a>
-              </div>
-            ) : (
-                <div className="login-signup-div">
-                  {/* The navbar will show these links before you log in */}
-
-                  <Link to="/login" className="nav-text">Login</Link>
-                  <p id="nav-text-line">|</p>
-                  <Link to="/signup" className="nav-text">Sign Up</Link>
                 </div>
-              )}
+              ) : (
+                  <div className="login-signup-div">
+                    {/* The navbar will show these links before you log in */}
 
-          </nav>
+                    <Link to="/login" className="nav-text">Login</Link>
+                    <p id="nav-text-line">|</p>
+                    <Link to="/signup" className="nav-text">Sign Up</Link>
+                  </div>
+                )}
+            </nav>
+          </div>
+
         </div>
       </div>
     )
@@ -95,8 +108,9 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    handleClick: () => { dispatch(logout())},
+    handleClick: () => { dispatch(logout()) },
     changeFilter: (whatToFilter) => dispatch(changeFilter(whatToFilter)),
+    fetchWhatToSearch: (whatToSearch) => dispatch(fetchWhatToSearch(whatToSearch)),
     fetchProducts: () => dispatch(fetchProducts())
   }
 }
@@ -115,7 +129,7 @@ function toggleDropdown() {
   document.getElementById("dropdown").classList.toggle("show");
 }
 
-window.onclick = function(event) {
+window.onclick = function (event) {
   if (!event.target.matches('.dropdown-btn')) {
     const dropdowns = document.getElementsByClassName("dropdown-content");
     for (let i = 0; i < dropdowns.length; i++) {
