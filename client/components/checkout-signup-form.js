@@ -19,7 +19,7 @@ const AuthForm2 = props => {
               <input className="create-acc-input"name="password" type="password" placeholder="Password" />
             </div>
             <div className="google-button">
-              <a className="google" href="/auth/google">{displayName} with Google!!!</a>
+              <a className="google" href="/auth/google">{displayName} with Google</a>
               <button className="black-button" type="submit">{displayName}</button>
             </div>
           </div>
