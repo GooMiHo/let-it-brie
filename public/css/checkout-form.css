@@ -35,7 +35,6 @@
   margin: auto;
   margin-top: 20px;
   border: 2px solid #636770;
-  z-index: -1;
 }
 
 .or {
@@ -44,16 +43,12 @@
 }
 
 #form-page {
+  z-index: 5;
   margin-top: 20px;
 }
 
 .form-div {
   display: block;
-}
-
-input.create-acc-input {
-  display: block;
-  margin: 20px 0;
 }
 
 .guest-checkout-form {
