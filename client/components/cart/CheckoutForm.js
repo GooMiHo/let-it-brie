@@ -4,7 +4,7 @@ import AddressForm from './AddressForm'
 import { me, createUser, editUser } from '../../store/user';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { Signup } from '../../components'
+import { CheckoutSignup } from '../../components/checkout-signup-form'
 import css from '../../../public/css/checkout-form.css'
 
 class CheckoutForm extends React.Component {
@@ -97,7 +97,7 @@ class CheckoutForm extends React.Component {
         <div className="choices-div">
           <div className="choice-box">
             <h2 className="acc-or-guest">Create An Account</h2>
-            <Signup />
+            <CheckoutSignup />
           </div>
           <p className="or">-or-</p>
           <div className="choice-box">

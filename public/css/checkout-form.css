@@ -19,7 +19,7 @@
   text-align: center;
 }
 
-.form-square {
+#form-square {
   width: 90%;
   margin: auto;
   border-style: none;
@@ -43,7 +43,7 @@
   margin-top: 20px;
 }
 
-.form-page {
+#form-page {
   margin-top: 20px;
 }
 

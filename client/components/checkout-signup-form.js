@@ -6,32 +6,22 @@ import { auth } from '../store'
 /**
  * COMPONENT
  */
-const AuthForm = props => {
+const AuthForm2 = props => {
   const { name, displayName, handleSubmit, error } = props
 
   return (
-    <div className="form-page">
-      <div className="form-square">
+    <div className="form-page" id="form-page">
+      <div className="form-square" id="form-square">
         <form onSubmit={handleSubmit} name={name}>
-          <div className="a">
           <div>
             <div>
-              <label htmlFor="email">
-                {/* <small>Email</small> */}
-              </label>
-              <input name="email" type="text" required placeholder="Email" />
+              <input className="create-acc-input" name="email" type="text" required placeholder="Email" />
+              <input className="create-acc-input"name="password" type="password" placeholder="Password" />
             </div>
-            <div>
-              <label htmlFor="password">
-                {/* <small>Password</small> */}
-              </label>
-              <input name="password" type="password" placeholder="Password" />
+            <div className="google-button">
+              <a className="google" href="/auth/google">{displayName} with Google!!!</a>
+              <button className="black-button" type="submit">{displayName}</button>
             </div>
-          </div>
-          <div className="google-button">
-            <a  className="google" href="/auth/google">{displayName} with Google</a>
-            <button className="black-button" type="submit">{displayName}</button>
-          </div>
           </div>
           {error && error.response && <div> {error.response.data} </div>}
         </form>
@@ -76,13 +66,13 @@ const mapDispatch = dispatch => {
   }
 }
 
-export const Login = connect(mapLogin, mapDispatch)(AuthForm)
-export const Signup = connect(mapSignup, mapDispatch)(AuthForm)
+// export const Login = connect(mapLogin, mapDispatch)(AuthForm2)
+export const CheckoutSignup = connect(mapSignup, mapDispatch)(AuthForm2)
 
 /**
  * PROP TYPES
  */
-AuthForm.propTypes = {
+AuthForm2.propTypes = {
   name: PropTypes.string.isRequired,
   displayName: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
