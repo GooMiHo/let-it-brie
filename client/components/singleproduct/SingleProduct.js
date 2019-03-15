@@ -84,6 +84,7 @@ class SingleProduct extends React.Component {
       cart.push(product)
     }
     localStorage.setItem('cart', JSON.stringify(cart))
+    console.log(true);
     var cartValue = localStorage.getItem('cart')
     var cartObj = JSON.parse(cartValue)
     this.setState({ cart: [...cart], cartObj })
@@ -95,6 +96,7 @@ class SingleProduct extends React.Component {
   }
 
   render() {
+    console.log('this.state.cart', this.state.cart)
     const { selectedProduct } = this.props
     if (!selectedProduct.id) {
       return 'Loading the product...'
