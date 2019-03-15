@@ -13,7 +13,7 @@
 }
 
 .cart-item-divider {
-  background-color: black;
+  background-color: #636770;
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
@@ -71,7 +71,7 @@ ul {
 }
 
 .checkout-btn {
-  margin-right: 10px;
+  margin-top: 30px;
   background-color: #860101;
   padding: 10px;
   width: 15vw;
@@ -103,9 +103,71 @@ ul {
 }
 
 .rmv-button {
-  margin-top: 10px;
   color: black;
   padding: 5px 10px;
+  margin-top: 40px;
   background-color: white;
   border: 1px solid #e8e8e8;
+}
+
+.plus-btn {
+  border-radius: 0 4px 4px 0;
+  margin-left: 1.5px;
+}
+
+.minus-btn {
+  border-radius: 4px 0 0 4px;
+  margin-right: 1px;
+}
+
+.minus-btn,
+.plus-btn {
+  background-color: #636770;
+}
+
+.count-number {
+  display: inline;
+  background-color: #b9bfcc;
+}
+
+.order-total-div {
+  display: flex;
+  margin-top: 30px;
+  outline: 1px solid #636770;
+  justify-content: space-between;
+}
+
+.order-total-info {
+  padding: 20px;
+  font-size: 15px;
+  width: 350px;
+}
+
+.order-sum-title {
+  padding: 0 20px;
+  color: white;
+  background-color: #7b808b;
+  font-size: 20px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.order-sections-div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.order-line {
+  margin: 10px 0;
+}
+
+.checkout-btm {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.checkout-btm p {
+  color: black;
 }

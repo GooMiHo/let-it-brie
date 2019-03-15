@@ -53,8 +53,12 @@ class CartPage extends Component {
   increaseQuantity = (product, quantity) => {
     let cart = [...this.state.cart]
 
-    for (let i = 1; i <= quantity; i++) {
-      cart.push(product)
+    for (let i = 0; i < cart.length; i++) {
+      if (quantity === 0) break;
+      if(cart[i].id === product.id) {
+        quantity--;
+        cart.splice(i, 0, product);
+      }
     }
 
     localStorage.setItem('cart', JSON.stringify(cart))
@@ -65,10 +69,16 @@ class CartPage extends Component {
 
   decreaseQuantity = (product, quantity) => {
     let cart = [...this.state.cart]
-
-    for (let i = quantity; i > 0; i--) {
-      cart.pop()
+    for (let i = 0; i < cart.length; i++) {
+      if (quantity === 0) break;
+      if(cart[i].id === product.id) {
+        quantity--;
+        cart.splice(i, 1);
+      }
     }
+    // for (let i = quantity; i > 0; i--) {
+    //   cart.pop()
+    // }
 
     localStorage.setItem('cart', JSON.stringify(cart))
     var cartValue = localStorage.getItem('cart')
@@ -117,77 +127,138 @@ class CartPage extends Component {
         {/* <ToastContainer lightBackground position={ToastContainer.POSITION.TOP_RIGHT} store={ToastStore}/> */}
         <h2 className="shopping-cart-title">Shopping Cart</h2>
         <hr className="cart-title-underline" />
-        <ul>
-          {cartItemNames.length ?
-            cartItemNames.map(productName => (
-              <div key={cartItems[productName].id}>
-                <li>
-                  <div className="cart-item-divider">
-                    <p>Item</p>
-                    <div className="cart-item-pricing">
-                      <p>Price</p>
-                      <p>Qty</p>
-                      <p>Total</p>
-                    </div>
-                  </div>
-                  <div className="cart-item-div">
-                    <div className="pic-name-div">
-                      <img className="cart-item-img" src={cartItems[productName].imageURL} />
-                      <div  className="name-rmv-div">
-                        <Link to={`/products/${cartItems[productName].id}`}>
-                          <h3 className="cart-item-name">{`${cartItems[productName].name}`}</h3>
-                        </Link>
-                        <button
-                          className="rmv-button"
-                          type="button"
-                          onClick={() => this.removeFromCart(cartItems[productName])}
-                        >Remove</button>
+        {cartItemNames.length ?
+          <div>
+            <ul>
+              {cartItemNames.map(productName => (
+                <div key={cartItems[productName].id}>
+                  <li>
+                    <div className="cart-item-divider">
+                      <p>Item</p>
+                      <div className="cart-item-pricing">
+                        <p>Price</p>
+                        <p>Qty</p>
+                        <p>Total</p>
                       </div>
                     </div>
-                    <div className="cart-product-info">
-                      <p className="cart-prod-name">{`$${cartItems[productName].price}`}</p>
-                      <div className="qty-change">
-                        <button
-                          className="button"
-                          type="button"
-                          onClick={() => this.decreaseQuantity(cartItems[productName], this.state.quantity)}
-                          disabled={cartItems.stock <= 0}
-                        >-</button>
-                        {cartItems[productName].count}
-                        <button
-                          className="button"
-                          type="button"
-                          onClick={async () => {
-                            let stock = await this.checkStock(cartItems[productName].id)
-                            if (stock >= cartItems[productName].count + 1) {
-                              this.increaseQuantity(cartItems[productName], this.state.quantity)
-                            } else {
-                              alert(`Sorry, there ${stock === 1 ? 'is' : 'are'} only ${stock} left in stock.`)
-                              // return () => ToastStore.error(`Sorry, there are ${stock === 1 ? 'is' : 'are'} only ${stock} left in stock.`)
-                            }
-                          }}
-                          disabled={cartItems.stock <= 0}
-                        >+</button>
+                    <div className="cart-item-div">
+                      <div className="pic-name-div">
+                        <img className="cart-item-img" src={cartItems[productName].imageURL} />
+                        <div className="name-rmv-div">
+                          <Link to={`/products/${cartItems[productName].id}`}>
+                            <h3 className="cart-item-name">{`${cartItems[productName].name}`}</h3>
+                          </Link>
+                          <button
+                            className="rmv-button"
+                            type="button"
+                            onClick={() => this.removeFromCart(cartItems[productName])}
+                          >Remove</button>
+                        </div>
                       </div>
-                      <p className="product-total">{`$${cartItems[productName].price * cartItems[productName].count}`}</p>
+                      <div className="cart-product-info">
+                        <p className="cart-prod-name">{`$${cartItems[productName].price}`}</p>
+                        <div className="qty-change">
+                          <button
+                            className="minus-btn"
+                            value={productName}
+                            type="button"
+                            onClick={(e) => this.decreaseQuantity(cartItems[e.target.value], this.state.quantity)}
+                            disabled={cartItems.stock <= 0}
+                          >-</button>
+                          {cartItems[productName].count}
+                          <button
+                            className="plus-btn"
+                            type="button"
+                            onClick={async () => {
+                              let stock = await this.checkStock(cartItems[productName].id)
+                              if (stock >= cartItems[productName].count + 1) {
+                                this.increaseQuantity(cartItems[productName], this.state.quantity)
+                              } else {
+                                alert(`Sorry, there ${stock === 1 ? 'is' : 'are'} only ${stock} left in stock.`)
+                                // return () => ToastStore.error(`Sorry, there are ${stock === 1 ? 'is' : 'are'} only ${stock} left in stock.`)
+                              }
+                            }}
+                            disabled={cartItems.stock <= 0}
+                          >+</button>
+                        </div>
+                        <p className="product-total">{`$${cartItems[productName].price * cartItems[productName].count}`}</p>
+                      </div>
                     </div>
-                  </div>
-                </li>
-                <br />
+                  </li>
+                </div>
+              ))}
+            </ul>
+            <div className="order-total-div">
+              <h2 className="order-sum-title">Order<br/>Summery</h2>
+              <div className="order-total-info">
+                <div className="order-sections-div">
+                  <p>Merchandise Subtotal:</p>
+                  <p>{`$${getSubTotal(cartItems)}`}</p>
+                </div>
+                <hr className="order-line"/>
+                <div className="order-sections-div">
+                  <p>Taxes:</p>
+                  <p>{`$${getTax(cartItems)}`}</p>
+                </div>
+                <div className="order-sections-div">
+                  <p>Shipping & Handling:</p>
+                  <p>{getShipping(cartItems)}</p>
+                </div>
+                <hr className="order-line"/>
+                <div className="order-sections-div">
+                  <p><b>Order Total:</b></p>
+                  <p><b>{`$${getTotal(cartItems)}`}</b></p>
+                </div>
               </div>
-            ))
-            :
-            <div>
-              <p>Your cart is currently empty</p>
-              <Link to="/products">Cheese Please!!</Link>
-            </div>}
-        </ul>
-        {cartItemNames.length ? <Link to="/cart/checkout">
-          <button className="checkout-btn" type="button">Checkout</button>
-        </Link> : null}
+            </div>
+            <div className="checkout-btm">
+              <Link to="/products">
+                <p className="contin-shop" type="button">{'< Continue Shopping'}</p>
+              </Link>
+              <Link to="/cart/checkout">
+                <button className="checkout-btn" type="button">Checkout</button>
+              </Link>
+            </div>
+          </div>
+          :
+          <div>
+            <p>Your cart is currently empty</p>
+            <Link to="/products">Cheese Please!!</Link>
+          </div>}
       </div>
     )
   }
 }
 
 export default CartPage;
+
+function getSubTotal(cartItems) {
+  let cartItemNames = Object.keys(cartItems);
+  let total = 0;
+  cartItemNames.forEach(product => {
+    total += cartItems[product].price * cartItems[product].count
+  });
+  return Number(total.toFixed(2));
+}
+
+function getTax(cartItems) {
+  let cartItemNames = Object.keys(cartItems);
+  let total = 0;
+  cartItemNames.forEach(product => {
+    total += cartItems[product].price * cartItems[product].count
+  });
+  total = total * 0.06;
+  return Number(total.toFixed(2));
+}
+
+function getShipping(cartItems) {
+  const shippingCost = getSubTotal(cartItems) >= 50 ? 'FREE' : '$20.00';
+  return shippingCost;
+}
+
+function getTotal(cartItems) {
+  const subtotal = getSubTotal(cartItems);
+  let total = subtotal + Number(getTax(cartItems).toFixed(2));
+  if (subtotal >= 50) total += 50;
+  return total.toFixed(2);
+}
