@@ -1,0 +1,62 @@
+.create-account-div {
+  width: 70%;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.checkout-title {
+  margin-bottom: 5px;
+}
+
+.checkout-title-underline {
+  border: 1px solid black;
+  margin-bottom: 20px;
+}
+
+.acc-or-guest {
+  background-color: #636770;
+  color: white;
+  text-align: center;
+}
+
+.form-square {
+  width: 90%;
+  margin: auto;
+  border-style: none;
+}
+
+.choices-div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.choice-box {
+  width: 40%;
+  margin: auto;
+  margin-top: 20px;
+  border: 2px solid #636770;
+  z-index: -1;
+}
+
+.or {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.form-page {
+  margin-top: 20px;
+}
+
+.form-div {
+  display: block;
+}
+
+input.create-acc-input {
+  display: block;
+  margin: 20px 0;
+}
+
+.guest-checkout-form {
+  width: 90%;
+  margin: 20px auto;
+}

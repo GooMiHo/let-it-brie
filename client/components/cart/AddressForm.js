@@ -2,9 +2,9 @@ import React from 'react'
 
 const AddressForm = (props) => {
   return (
-    <div>
+    <div className="guest-checkout-form">
         <form>
-            <h1>Contact Information</h1>
+            <h3>Contact Information</h3>
             <label htmlFor='email'>Email: </label>
             <input
                 type='text'
@@ -14,7 +14,7 @@ const AddressForm = (props) => {
                 placeholder='E-mail'
             />
 
-            <h1>Shipping Information</h1>
+            <h3>Shipping Information</h3>
             <label htmlFor='firstName'>First Name: </label>
             <input
                 type='text'
