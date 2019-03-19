@@ -31,7 +31,7 @@ class Navbar extends Component {
       <div id="banner">
         <div className="banner-div">
           <div className="logo-and-title-div">
-            <Link to="/home"><img className="group-logo" src="https://preview.ibb.co/bUndOL/abcs-logo.png/" alt="ABCS logo" /></ Link>
+            <Link to="/home"><img className="group-logo" src="images/abcs-logo.png" alt="ABCS logo" /></ Link>
             <h1 className="main-title">Let it Brie</h1>
           </div>
           <div className="cart-link">

@@ -167,8 +167,8 @@ form div {
 }
 
 #shopping-cart-image {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   border-radius: 5px;
   z-index: 2;
   position: absolute;
@@ -185,8 +185,8 @@ form div {
   opacity: 0;
 }
 
-#shopping-cart-image2:hover {
-  opacity: 0.5;
+#shopping-cart-image:hover {
+  background-color: #f0f0f0;
 }
 
 #shopping-cart-image2:active,
@@ -206,9 +206,9 @@ form div {
   font-size: 20px;
   color: black;
   line-height: 1.6;
-   position: absolute;
-  bottom: 33.5px;
-  left: 31px;
+  position: absolute;
+  bottom: 39.5px;
+  left: 35px;
   z-index: 3;
 }
 

@@ -23,9 +23,9 @@ class CartButton extends Component {
     return (
       <div id="shopping-cart" >
         <Link to="/cart">
-          <img id="shopping-cart-image" src="https://preview.ibb.co/iHmAaA/shopping-cart-button.jpg" alt="shopping-cart" />
+          <img id="shopping-cart-image" src="images/shopping_cart_button.png" alt="shopping-cart" />
           <div id="hide-img-hover" >
-            <span><img id="shopping-cart-image2" src="https://preview.ibb.co/kcjSoV/shopping-cart-button3.jpg" alt="shopping-cart" /></span>
+            {/* <span><img id="shopping-cart-image2" src="https://preview.ibb.co/kcjSoV/shopping-cart-button3.jpg" alt="shopping-cart" /></span> */}
           </div>
 
           <p className="cart-number">{this.state.cartItemCount}</p>
