@@ -12,7 +12,7 @@ const OurStory = () => {
         <div className="teamContainer">
           <figure>
             <a href="https://www.linkedin.com/in/ayemachowdhury/">
-              <img src="https://i.ibb.co/M1TdNgx/Ayema.png" />
+              <img src="images/Ayema.png" />
             </a>
             <div>
             <h5>Ayema Chowdhury</h5>
@@ -22,7 +22,7 @@ const OurStory = () => {
           </figure>
           <figure>
             <a href="https://www.linkedin.com/in/summerdeehan/">
-              <img src="https://i.ibb.co/5vkZDLW/Summer.png" />
+              <img src="images/Summer.png" />
             </a>
             <div>
               <h5>Summer Deehan</h5>
@@ -32,7 +32,7 @@ const OurStory = () => {
           </figure>
           <figure>
             <a href="https://www.linkedin.com/in/conniejiayeelim/">
-              <img src="https://i.ibb.co/bK30fdb/Connie.png" />
+              <img src="images/Connie.png" />
             </a>
             <div>
               <h5>Connie Lim</h5>
@@ -43,7 +43,7 @@ const OurStory = () => {
           </figure>
           <figure>
             <a href="https://www.linkedin.com/in/bethany-m-walker/">
-              <img src="https://image.ibb.co/hK7DCq/profile-pic.jpg" />
+              <img src="images/Bethany.jpg" />
             </a>
             <div>
               <h5>Bethany Walker</h5>

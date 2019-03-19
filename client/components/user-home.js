@@ -18,9 +18,9 @@ export const UserHome = props => {
         <BrowserView>
           <SlideShow
             images={[
-              'https://i.ibb.co/xzWVJBB/tray.jpg',
-              'https://i.ibb.co/D476fmV/tray2.jpg',
-              'https://i.ibb.co/TtK29Hz/tray3.jpg'
+              'images/tray.jpg',
+              'images/tray2.jpg',
+              'images/tray3.jpg'
             ]}
             width="920px"
             imagesHeightMobile="56vw"
