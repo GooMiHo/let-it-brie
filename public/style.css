@@ -468,11 +468,11 @@ html, body, #container, .carousel {
 }
 
 .form-page input {
-  background-color: #EDF0FC;
-  width: 100%;
-  border: none;
+  background-color: white;
+  border: 1px solid #d1d5e0;
+  border-radius: 3px;
   font-size: 15px;
-  padding: 5px;
+  padding: 10px;
 }
 
 .black-button {

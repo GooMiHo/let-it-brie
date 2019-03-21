@@ -4,6 +4,16 @@
   margin-top: 20px;
 }
 
+.create-acc-info {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.create-acc-password {
+  margin-top: 20px;
+}
+
 .checkout-title {
   margin-bottom: 5px;
 }
