@@ -1,0 +1,19 @@
+.rating-box {
+  width: 90%;
+  background-color: #f2f2f2;
+  border-radius: 3px;
+  margin: 20px auto;
+}
+
+.rating-box form {
+  padding: 25px;
+}
+
+.rating-box input {
+  margin: 3px 0;
+}
+
+.review-btn {
+  padding: 5px;
+  margin-left: 5px;
+}

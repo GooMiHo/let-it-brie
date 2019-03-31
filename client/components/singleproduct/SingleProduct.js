@@ -96,7 +96,6 @@ class SingleProduct extends React.Component {
   }
 
   render() {
-    console.log('this.state.cart', this.state.cart)
     const { selectedProduct } = this.props
     if (!selectedProduct.id) {
       return 'Loading the product...'
