@@ -215,7 +215,7 @@ class CartPage extends Component {
               <Link to="/products">
                 <p className="contin-shop" type="button">{'< Continue Shopping'}</p>
               </Link>
-              <Link to="/cart/checkout">
+              <Link to="/checkout">
                 <button className="checkout-btn" type="button">Checkout</button>
               </Link>
             </div>
@@ -238,7 +238,7 @@ function getSubTotal(cartItems) {
   cartItemNames.forEach(product => {
     total += cartItems[product].price * cartItems[product].count
   });
-  return Number(total.toFixed(2));
+  return total.toFixed(2);
 }
 
 function getTax(cartItems) {
@@ -247,18 +247,18 @@ function getTax(cartItems) {
   cartItemNames.forEach(product => {
     total += cartItems[product].price * cartItems[product].count
   });
-  total = total * 0.06;
-  return Number(total.toFixed(2));
+  total = Number(total * 0.06);
+  return total.toFixed(2);
 }
 
 function getShipping(cartItems) {
-  const shippingCost = getSubTotal(cartItems) >= 50 ? 'FREE' : '$20.00';
+  const shippingCost = Number( getSubTotal(cartItems) ) >= 50 ? 'FREE' : '$20.00';
   return shippingCost;
 }
 
 function getTotal(cartItems) {
-  const subtotal = getSubTotal(cartItems);
-  let total = subtotal + Number(getTax(cartItems).toFixed(2));
+  const subtotal = Number(getSubTotal(cartItems));
+  let total = subtotal + Number(getTax(cartItems));
   if (subtotal >= 50) total += 50;
   return total.toFixed(2);
 }

@@ -492,6 +492,7 @@ html, body, #container, .carousel {
 
 .google {
   font-size: 20px;
+  margin-top: 20px;
 }
 
 .account {
@@ -697,3 +698,4 @@ button {
   }
 
 }
+

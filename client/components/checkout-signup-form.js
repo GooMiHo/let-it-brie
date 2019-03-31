@@ -15,8 +15,20 @@ const AuthForm2 = props => {
         <form onSubmit={handleSubmit} name={name}>
           <div>
             <div className="create-acc-info">
-              <input className="create-acc-email" name="email" type="email" placeholder="Email" required/>
-              <input className="create-acc-password"name="password" type="password" placeholder="Password" required/>
+              <div className="user-input-wrp">
+                <input className="create-acc-email"
+                       type="email"
+                       name="email"
+                       required />
+                <span className="floating-label">Email</span>
+              </div>
+              <div className="user-input-wrp create-acc-password">
+                <input
+                       type="password"
+                       name="password"
+                       required />
+                <span className="floating-label">Password</span>
+              </div>
             </div>
             <div className="google-button">
               <a className="google" href="/auth/google">{displayName} with Google</a>

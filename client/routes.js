@@ -44,9 +44,9 @@ class Routes extends Component {
           <Route path="/admin/products" render={routeProps => <ProductsListAdmin {...routeProps} user={this.props.user} />} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
-          <Route path='/cart/checkout/payment' component={PaymentCheckout} />
+          <Route path='/payment' component={PaymentCheckout} />
           <Route exact path="/confirmation" component={Confirmation} />
-          <Route exact path="/cart/checkout" render={routeProps => <CheckoutForm {...routeProps} user={this.props.user} />} />
+          <Route exact path="/checkout" render={routeProps => <CheckoutForm {...routeProps} user={this.props.user} />} />
           <Route path="/our-story" component={OurStory} />
           <Route path="/help" component={ContactUs} />
           <Route exact path="/cart" component={CartPage} />

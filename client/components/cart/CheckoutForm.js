@@ -38,12 +38,14 @@ class CheckoutForm extends React.Component {
   }
 
   handleChange = (e) => {
+    console.log('what',e.target.value)
     this.setState({
       [e.target.name]: e.target.value
     })
   }
 
   handleSubmit = (e) => {
+    console.log('test')
     e.preventDefault();
     if (!this.props.user.id) {
       this.props.addUser({
@@ -83,7 +85,7 @@ class CheckoutForm extends React.Component {
       phoneNumber: ''
     })
 
-    this.props.history.push('/cart/checkout/payment')
+    this.props.history.push('/payment')
   }
 
   render() {
@@ -102,8 +104,7 @@ class CheckoutForm extends React.Component {
           <p className="or">-or-</p>
           <div className="choice-box">
             <h2 className="acc-or-guest">Guest Checkout</h2>
-            <AddressForm state={this.state} handleChange={this.handleChange} />
-            <button type="submit" onClick={this.handleSubmit} disabled={!isEnabled}>Checkout as Guest</button>
+            <AddressForm state={this.state} handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
           </div>
         </div>
       </div>

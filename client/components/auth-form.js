@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { auth } from '../store'
 
+import css from '../../public/css/auth-form.css'
+
 /**
  * COMPONENT
  */
@@ -12,26 +14,36 @@ const AuthForm = props => {
   return (
     <div className="form-page">
       <div className="form-square">
-        <form onSubmit={handleSubmit} name={name}>
-          <div className="a">
-          <div>
-            <div>
-              <label htmlFor="email">
-                {/* <small>Email</small> */}
-              </label>
-              <input name="email" type="text" required placeholder="Email" />
+        <form className="auth-form" onSubmit={handleSubmit} name={name}>
+          <div className="email-password-div">
+            <div className="auth-input-wrp">
+              <input className="auth-acc-input"
+                type="email"
+                name="email"
+                required />
+              <span className="floating-label">Email</span>
             </div>
-            <div>
-              <label htmlFor="password">
-                {/* <small>Password</small> */}
-              </label>
-              <input name="password" type="password" placeholder="Password" />
+            <div className="auth-input-wrp">
+              <input className="auth-acc-input"
+                type="password"
+                name="password"
+                required />
+              <span className="floating-label">Password</span>
             </div>
+            {/* <div>
+                <label htmlFor="email">
+                </label>
+                <input name="email" type="text" required placeholder="Email" />
+              </div>
+              <div>
+                <label htmlFor="password">
+                </label>
+                <input name="password" type="password" placeholder="Password" />
+              </div> */}
           </div>
           <div className="google-button">
-            <a  className="google" href="/auth/google">{displayName} with Google</a>
+            <a className="google" href="/auth/google">{displayName} with Google</a>
             <button className="black-button" type="submit">{displayName}</button>
-          </div>
           </div>
           {error && error.response && <div> {error.response.data} </div>}
         </form>
