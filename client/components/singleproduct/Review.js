@@ -25,7 +25,7 @@ class Review extends React.Component {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
         <ToastContainer lightBackground position={ToastContainer.POSITION.TOP_RIGHT} store={ToastStore} />
         <hr className="review-line-abv" />
-        <h3 className="review-title"> Reviews </h3>
+        <a id="review-sec"><h3 className="review-title"> Reviews </h3></a>
         {
           this.props.state.showForm ? null :
             <button type="button" className="write-review-btn" onClick={this.props.showForm}>

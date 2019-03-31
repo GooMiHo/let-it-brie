@@ -105,7 +105,7 @@ export function reviewInfo(reviews) {
     return (
       <div className="reviewAv">
         {starRating(ratingAv)}
-        <p className="reviewCount">{numOfReviews} customer review{oneReview ? null : 's'}</p>
+        <a href="#review-sec"><p className="reviewCount">{numOfReviews} customer review{oneReview ? null : 's'}</p></a>
       </div>
     )
 }
