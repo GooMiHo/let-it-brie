@@ -90,7 +90,7 @@ const AddressForm = (props) => {
             <span className="floating-label">Phone Number</span>
           </div>
         </div>
-        <button type="submit">Checkout as Guest</button>
+        <button className="guest-button" type="submit">Checkout as Guest</button>
       </form>
     </div>
   )

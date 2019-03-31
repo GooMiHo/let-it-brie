@@ -125,11 +125,10 @@ form div {
   flex-direction: column;
 }
 
-.flex-central {
+/* .flex-central {
   display: flex;
   justify-content: center;
-
-}
+} */
 
 .product-image {
   height: 200px;
@@ -577,6 +576,7 @@ html, body, #container, .carousel {
 button {
   color: white;
   background-color: black;
+  border-radius: 3px;
 }
 
 .cart-item-name {
@@ -602,6 +602,19 @@ button {
 .text-indiv-prod {
   min-width: 270px;
   margin-left: 6%;
+}
+
+.contact {
+  margin-top: 10%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.contact form {
+  padding: 40px;
+  border: 2px solid gray;
+  border-radius: 3px;
 }
 
 /* ====================== media query ======================== */

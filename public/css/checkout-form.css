@@ -103,3 +103,15 @@
   margin-bottom: 10px;
 }
 
+.guest-button {
+  padding: 9px;
+  width: 100%;
+}
+
+.submit-qst-btn {
+  margin: auto;
+  display: block;
+  width: 60%;
+  font-size: 20px;
+  padding: 10px;
+}
